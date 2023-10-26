@@ -14,6 +14,15 @@ const answers = [
 	'As I see it, yes ✌️',
 ]
 const btnRemove = document.querySelector('.btn-remove ')
+const ball = document.querySelector('img')
+
+const shake = () => {
+    ball.classList.add('shake-animation')
+    setTimeout( checkQuestion,1000)
+}
+
+
+
 
 const checkQuestion = () => {
 	if (input.value.includes('?')) {
@@ -25,7 +34,8 @@ const checkQuestion = () => {
 	} else {
 		error.textContent = '*Ask me again using a question mark'
 		answer2.innerHTML = ''
-	}
+    }
+    ball.classList.remove('shake-animation')
 }
 
 const randomAnswer = () => {
@@ -49,3 +59,4 @@ const clearAll = () => {
 
 input.addEventListener('keydown', handleKeyDown)
 btnRemove.addEventListener('click', clearAll)
+ball.addEventListener('click', shake)
